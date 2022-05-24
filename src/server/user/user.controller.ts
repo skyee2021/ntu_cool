@@ -1,13 +1,3 @@
-// import { Controller, Get } from '@nestjs/common';
-
-// @Controller('user')
-// export class UserController {
-//   @Get('users')
-//   findAll(): string {
-//     return "All User's Info"; // [All User's Info] 暫時代替所有用戶的信息
-//   }
-// }
-
 import {
   Body,
   Controller,
@@ -15,7 +5,9 @@ import {
   Get,
   Param,
   Post,
-  Put
+  Put,
+  UsePipes,
+  ValidationPipe
 } from '@nestjs/common';
 import { CreateUserDTO, EditUserDTO } from './user.dto';
 import { User } from './user.interface';
@@ -53,6 +45,7 @@ export class UserController {
 
   // POST /user
   @Post()
+  @UsePipes(ValidationPipe)
   async addOne(@Body() body: CreateUserDTO): Promise<UserResponse> {
     await this.userService.addOne(body);
     return {
@@ -63,6 +56,7 @@ export class UserController {
 
   // PUT /user/:_id
   @Put(':_id')
+  @UsePipes(ValidationPipe)
   async editOne(
     @Param('_id') _id: string,
     @Body() body: EditUserDTO

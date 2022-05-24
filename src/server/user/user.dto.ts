@@ -1,10 +1,22 @@
+import { IsNotEmpty, IsString, IsEmail } from 'class-validator';
+
 export class CreateUserDTO {
   readonly _id: string;
-  readonly user_name: string;
-  readonly user_email: string;
+  @IsString()
+  @IsNotEmpty()
+  public readonly user_name: string;
+  @IsEmail(/^\S@\S$/)
+  @IsString()
+  @IsNotEmpty()
+  public readonly user_email: string;
 }
 
 export class EditUserDTO {
-  readonly user_name: string;
-  readonly user_email: string;
+  @IsString()
+  @IsNotEmpty()
+  public readonly user_name: string;
+  @IsEmail(/^\S@\S$/)
+  @IsString()
+  @IsNotEmpty()
+  public readonly user_email: string;
 }
