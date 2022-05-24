@@ -30,19 +30,20 @@
 
 ```bash
 $ npm install
+
+# use mongodb
+$ brew tap mongodb/brew
+$ brew install mongodb-community
 ```
 
 ## Running the app
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
+# running mongodb-community
+$ brew services start mongodb-community
+# running project
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
 ```
 
 ## Test
