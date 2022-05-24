@@ -1,1 +1,1 @@
-export const regPositive: RegExp = /^\S@\S$/;
+export const regPositive = /^\S@\S$/;
